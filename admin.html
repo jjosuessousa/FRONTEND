@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - CineTech</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form div {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+        #file-name {
+            margin-top: 0.5rem;
+            display: block;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Administração</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Cadastrar Novo Filme</h2>
+        <form id="movieForm" enctype="multipart/form-data">
+            <!-- Campo: Título -->
+            <div>
+                <label for="title">Título:</label>
+                <input type="text" id="title" placeholder="Digite o título do filme" required>
+            </div>
+
+            <!-- Campo: Descrição -->
+            <div>
+                <label for="description">Descrição:</label>
+                <textarea id="description" placeholder="Digite a descrição do filme" required></textarea>
+            </div>
+
+            <!-- Campo: Categoria -->
+            <div>
+                <label for="category">Categoria:</label>
+                <input type="text" id="category" placeholder="Digite a categoria do filme" required>
+            </div>
+
+            <!-- Campo: Upload de Imagem -->
+            <div>
+                <label for="image">Selecione uma imagem:</label>
+                <input type="file" id="image" accept="image/*" required style="display: none;">
+                <button type="button" onclick="document.getElementById('image').click()">Escolher arquivo</button>
+                <span id="file-name">Nenhum arquivo selecionado</span>
+            </div>
+
+            <!-- Campo: Link do Trailer -->
+            <div>
+                <label for="trailer">Link do Trailer:</label>
+                <input type="text" id="trailer" placeholder="Digite o link do trailer" required>
+            </div>
+
+            <!-- Botão de Envio -->
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+</body>
+</html>

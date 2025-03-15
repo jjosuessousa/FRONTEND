@@ -1,0 +1,113 @@
+/* Container dos filmes */
+#movies-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha, se necessário */
+    gap: 20px; /* Espaço entre os itens */
+    justify-content: center; /* Centraliza os itens no container */
+    padding: 20px;
+}
+
+/* Estilo para cada card de filme */
+.movie-card {
+    width: 200px; /* Largura fixa para os cards */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para a imagem */
+.movie-card img {
+    width: 100%; /* A imagem ocupa toda a largura do card */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+/* Estilo do cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    flex-shrink: 0; /* Mantém o título fixo */
+}
+
+nav {
+    flex-grow: 1; /* Permite que o menu ocupe o espaço disponível */
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo do menu principal */
+.nav-buttons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* Espaço entre os itens */
+}
+
+.nav-buttons li {
+    position: relative; /* Necessário para o dropdown */
+}
+
+.nav-buttons li a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #555;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-buttons li a:hover {
+    background-color: #777;
+}
+
+/* Estilo do dropdown */
+.dropdown-content {
+    display: none; /* Esconde o menu por padrão */
+    position: absolute;
+    background-color: #333;
+    min-width: 150px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #444;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+.dropdown-content a:hover {
+    background-color: #444;
+}
+
+/* Exibe o dropdown ao passar o mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

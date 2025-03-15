@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineTech - Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="admin.html">CadastrarFilme</a>
+       
+    </header>
+    <header>
+        <div class="header-container">
+            <h1>CineTech</h1>
+            <nav>
+                <ul class="nav-buttons">
+                    <li><a href="#">Lançamentos</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Categorias</a>
+                        <div class="dropdown-content">
+                            <a href="#">Ação</a>
+                            <a href="#">Terror</a>
+                            <a href="#">Comédia</a>
+                            <a href="#">Drama</a>
+                            <a href="#">Fantasia</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Filmes</a></li>
+                    <li><a href="#">Séries</a></li>
+                    <li><a href="#">Como Assistir</a></li>
+                    <li><a href="listagem de todos os filmes.html">listagem de todos os filmes </a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar filmes...">
+                <button id="searchButton">Buscar</button>
+            </div>
+        </div>
+    </header>
+    
+    
+    
+    <main>
+      
+
+        <section id="releases">
+            <h2>Lançamentos</h2>
+            <div id="movies-container"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
