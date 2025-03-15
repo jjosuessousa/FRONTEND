@@ -1,106 +1,148 @@
-/* Container dos filmes */
+/* ============================
+   CONTAINER DOS FILMES
+============================ */
 #movies-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha, se necessário */
-    gap: 20px; /* Espaço entre os itens */
-    justify-content: center; /* Centraliza os itens no container */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta para caber na tela */
+    gap: 20px; /* Espaçamento entre os itens */
     padding: 20px;
+    justify-content: center; /* Centraliza o conteúdo */
 }
 
-/* Estilo para cada card de filme */
+/* Estilo de cada card de filme */
 .movie-card {
-    width: 200px; /* Largura fixa para os cards */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff; /* Fundo branco para destaque */
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px;
+    text-align: center; /* Centraliza o conteúdo do card */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação suave ao passar o mouse */
+}
+
+/* Animação ao passar o mouse no card */
+.movie-card:hover {
+    transform: translateY(-5px); /* Levanta o card */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
 }
 
 /* Estilo para a imagem */
 .movie-card img {
-    width: 100%; /* A imagem ocupa toda a largura do card */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 5px;
-    margin-bottom: 10px;
+    width: 100%; /* A imagem ocupa toda a largura disponível */
+    height: auto; /* Mantém a proporção */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 15px; /* Espaço abaixo da imagem */
 }
-/* Estilo do cabeçalho */
+
+/* Estilo para o título do filme */
+.movie-card h3 {
+    font-size: 1.5rem; /* Aumenta o tamanho do título */
+    color: #2c3e50; /* Cor escura para destaque */
+    margin-bottom: 10px; /* Espaço entre o título e o texto */
+}
+
+/* Estilo para a descrição */
+.movie-card p {
+    font-size: 1rem; /* Texto padrão */
+    color: #666; /* Tom mais claro */
+    margin-bottom: 15px; /* Espaço inferior */
+}
+
+/* Estilo para o link do trailer */
+.movie-card a {
+    display: inline-block;
+    background-color: #2c3e50; /* Cor de fundo do botão */
+    color: white; /* Texto branco */
+    padding: 10px 20px; /* Tamanho do botão */
+    border-radius: 4px; /* Bordas arredondadas */
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 1rem; /* Tamanho da fonte */
+    transition: background-color 0.3s ease; /* Animação de hover */
+}
+
+.movie-card a:hover {
+    background-color: #34495e; /* Cor ao passar o mouse */
+}
+/* ============================
+   1. ESTILO DO CABEÇALHO
+============================ */
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #2c3e50;
+    color: white;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .header-container {
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: space-between;
+    width: 100%;
 }
 
 h1 {
     margin: 0;
-    font-size: 24px;
-    flex-shrink: 0; /* Mantém o título fixo */
+    font-size: 1.8rem;
 }
 
-nav {
-    flex-grow: 1; /* Permite que o menu ocupe o espaço disponível */
-    display: flex;
-    justify-content: center;
-}
-
-/* Estilo do menu principal */
+/* ============================
+   2. MENU PRINCIPAL
+============================ */
 .nav-buttons {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px; /* Espaço entre os itens */
+    gap: 15px;
 }
 
 .nav-buttons li {
-    position: relative; /* Necessário para o dropdown */
+    position: relative;
 }
 
 .nav-buttons li a {
     text-decoration: none;
-    color: #fff;
+    color: white;
     background-color: #555;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 4px;
     transition: background-color 0.3s;
+    font-size: 0.9rem;
 }
 
 .nav-buttons li a:hover {
     background-color: #777;
 }
 
-/* Estilo do dropdown */
+/* Dropdown (submenu) */
 .dropdown-content {
-    display: none; /* Esconde o menu por padrão */
+    display: none;
     position: absolute;
     background-color: #333;
     min-width: 150px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
+    margin-top: 10px;
+}
+
+.dropdown-content li {
+    padding: 0;
 }
 
 .dropdown-content a {
+    display: block;
     color: #fff;
     padding: 10px;
     text-decoration: none;
-    display: block;
     border-bottom: 1px solid #444;
 }
 
 .dropdown-content a:last-child {
-    border-bottom: none; /* Remove a borda do último item */
+    border-bottom: none;
 }
 
 .dropdown-content a:hover {
@@ -110,4 +152,38 @@ nav {
 /* Exibe o dropdown ao passar o mouse */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* ============================
+   3. BARRA DE BUSCA
+============================ */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.search-container input {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.search-container button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.search-container button:hover {
+    background-color: #34495e;
 }

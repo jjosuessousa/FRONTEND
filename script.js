@@ -1,45 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Identifica a página atual pelo título
     const pageTitle = document.title;
 
+    // Página principal
     if (pageTitle === "CineTech - Página Principal") {
-        // Executa funções específicas da página inicial
         loadMovies();
 
-        // Adiciona o evento ao botão de busca
         const searchButton = document.getElementById("searchButton");
         if (searchButton) {
             searchButton.addEventListener("click", function () {
-                const query = document.getElementById("searchInput").value;
+                const query = document.getElementById("searchInput").value.trim();
                 searchMovies(query);
             });
         }
+
+    // Página de administração
     } else if (pageTitle === "Administração - CineTech") {
-        // Executa funções específicas da página de administração
         const movieForm = document.getElementById("movieForm");
 
         if (movieForm) {
             movieForm.addEventListener("submit", function (event) {
-                event.preventDefault(); // Evita o reload da página
+                event.preventDefault();
 
-                const formData = new FormData();
-                formData.append("title", document.getElementById("title").value);
-                formData.append("description", document.getElementById("description").value);
-                formData.append("category", document.getElementById("category").value);
-                formData.append("image", document.getElementById("image").files[0]);
-                formData.append("trailer", document.getElementById("trailer").value);
+                // Captura os dados do formulário
+                const formData = new FormData(movieForm);
+                const imageFile = document.getElementById("image").files[0];
+                
+                // Verifica se a imagem foi selecionada antes do envio
+                if (!imageFile) {
+                    alert("Por favor, selecione uma imagem.");
+                    return;
+                }
 
+                formData.append("image", imageFile);
+
+                // Faz a requisição ao servidor
                 fetch("http://localhost/cineTech-api/addMovie.php", {
                     method: "POST",
                     body: formData,
                 })
-                    .then((response) => response.json())
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`Erro HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
                     .then((data) => {
                         if (data.success) {
                             alert(data.message || "Filme cadastrado com sucesso!");
-                            movieForm.reset(); // Limpa o formulário
-                            document.getElementById("file-name").textContent = "Nenhum arquivo selecionado"; // Reseta o campo de upload
-                            window.location.href = "index.html"; // Redireciona para a página inicial
+                            movieForm.reset();
+                            document.getElementById("file-name").textContent = "Nenhum arquivo selecionado";
+                            window.location.href = "index.html";
                         } else {
                             alert("Erro ao cadastrar filme: " + (data.error || "Erro desconhecido."));
                         }
@@ -55,43 +65,55 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Função para carregar todos os filmes
 function loadMovies() {
     const container = document.getElementById("movies-container");
-
-    // Verifica se o elemento existe antes de usar
     if (!container) {
         console.error("O elemento 'movies-container' não foi encontrado!");
         return;
     }
 
+    container.innerHTML = "<p>Carregando filmes...</p>";
     fetch("http://localhost/cineTech-api/getMovies.php")
-        .then((response) => response.json())
-        .then((movies) => renderMovies(movies))
-        .catch((error) => console.error("Erro ao carregar filmes:", error));
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((movies) => {
+            console.log("Filmes recebidos:", movies);
+            renderMovies(movies);
+        })
+        .catch((error) => {
+            console.error("Erro ao carregar filmes:", error);
+            container.innerHTML = "<p>Erro ao carregar filmes. Tente novamente mais tarde.</p>";
+        });
 }
 
-// Função para buscar filmes com um termo de busca
 function searchMovies(query) {
     const container = document.getElementById("movies-container");
-
-    // Verifica se o elemento existe antes de usar
     if (!container) {
         console.error("O elemento 'movies-container' não foi encontrado!");
         return;
     }
 
+    container.innerHTML = "<p>Buscando filmes...</p>";
     fetch(`http://localhost/cineTech-api/getMovies.php?search=${query}`)
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            return response.json();
+        })
         .then((movies) => renderMovies(movies))
-        .catch((error) => console.error("Erro ao buscar filmes:", error));
+        .catch((error) => {
+            console.error("Erro ao buscar filmes:", error);
+            container.innerHTML = "<p>Erro ao buscar filmes. Tente novamente mais tarde.</p>";
+        });
 }
 
-// Função para renderizar filmes na página
 function renderMovies(movies) {
     const container = document.getElementById("movies-container");
-
-    // Verifica se o elemento existe antes de tentar renderizar
     if (!container) {
         console.error("O elemento 'movies-container' não foi encontrado!");
         return;
@@ -99,7 +121,7 @@ function renderMovies(movies) {
 
     container.innerHTML = "";
 
-    if (!movies || movies.length === 0 || movies.message) {
+    if (!movies || movies.length === 0) {
         container.innerHTML = "<p>Nenhum filme encontrado.</p>";
         return;
     }
