@@ -44,7 +44,7 @@
             color: white;
             text-decoration: none;
             font-size: 1rem;
-            background-color: #34495e;
+            background-color: #345e58;
             padding: 8px 15px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
@@ -150,7 +150,7 @@
         <h1>Administração</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
+                <li><a href="/index.html">Início</a></li>
             </ul>
         </nav>
     </header>
@@ -221,6 +221,7 @@
                     }
 
                     formData.append("image", imageFile);
+                    
 
                     // Faz a requisição para o backend usando fetch (AJAX)
                     fetch("http://localhost/cineTech-api/addMovie.php", {

@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+   
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineTech - Página Principal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
 
+    <!-- Cabeçalho -->
     <header>
-        <a href="admin.html">CadastrarFilme</a>
        
-    </header>
-    <header>
+        
         <div class="header-container">
             <h1>CineTech</h1>
             <nav>
                 <ul class="nav-buttons">
-                    <li><a href="#">Lançamentos</a></li>
+                    <li><a href="pages/lancamentos.html">Lançamentos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropbtn">Categorias</a>
                         <div class="dropdown-content">
-                            <a href="#">Ação</a>
-                            <a href="#">Terror</a>
-                            <a href="#">Comédia</a>
-                            <a href="#">Drama</a>
-                            <a href="#">Fantasia</a>
+                            <!-- Botões de Categorias Dinâmicos -->
+                            <button class="category-button" data-category="acao">Ação</button>
+                            <button class="category-button" data-category="terror">Terror</button>
+                            <button class="category-button" data-category="comedia">Comédia</button>
+                            <button class="category-button" data-category="drama">Drama</button>
+                            <button class="category-button" data-category="fantasia">Fantasia</button>
                         </div>
                     </li>
-                    <li><a href="#">Filmes</a></li>
+                  
                     <li><a href="#">Séries</a></li>
-            
-                    <li><a href="listagem de todos os filmes.html">todos os filmes </a></li>
+                    <li><a href="pages/listagem-de-todos-os-filmes.html">Todos os Filmes</a></li>
                 </ul>
             </nav>
+            <!-- Barra de Busca -->
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar filmes...">
                 <button id="searchButton">Buscar</button>
             </div>
+            <!-- Link para a Página de Administração -->
+          
         </div>
     </header>
-    
-    
-    
-    <main>
-      
 
+    <!-- Conteúdo Principal -->
+    <main>
         <section id="releases">
             <h2>Lançamentos</h2>
             <div id="movies-container"></div>
         </section>
     </main>
+    <div id="movies-container">
+        <div class="movie-card">
+            <img src="path/to/image.jpg" alt="Título do Filme">
+            <h3>Título do Filme</h3>
+            <p>Descrição do filme...</p>
+            <a href="link-to-trailer.html" target="_blank">Ver Trailer</a>
+        </div>
+        <!-- Repita para outros filmes -->
+    </div>
+    
+
+    <!-- Link para o Script -->
     <script src="script.js"></script>
 </body>
 </html>
