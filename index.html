@@ -1,70 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-   
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineTech - Página Principal</title>
+    <title>CineTech - Catálogo de Filmes</title>
     <link rel="stylesheet" href="css/styles.css">
-
+    <script src="script.js" defer></script> <!-- Importa o arquivo JS -->
 </head>
 <body>
-
-    <!-- Cabeçalho -->
     <header>
-       
-        
-        <div class="header-container">
-            <h1>CineTech</h1>
-            <nav>
-                <ul class="nav-buttons">
-                    <li><a href="pages/lancamentos.html">Lançamentos</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Categorias</a>
-                        <div class="dropdown-content">
-                            <!-- Botões de Categorias Dinâmicos -->
-                            <button class="category-button" data-category="acao">Ação</button>
-                            <button class="category-button" data-category="terror">Terror</button>
-                            <button class="category-button" data-category="comedia">Comédia</button>
-                            <button class="category-button" data-category="drama">Drama</button>
-                            <button class="category-button" data-category="fantasia">Fantasia</button>
-                        </div>
-                    </li>
-                  
-                    <li><a href="#">Séries</a></li>
-                    <li><a href="pages/listagem-de-todos-os-filmes.html">Todos os Filmes</a></li>
-                </ul>
-            </nav>
-            <!-- Barra de Busca -->
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Buscar filmes...">
-                <button id="searchButton">Buscar</button>
-            </div>
-            <!-- Link para a Página de Administração -->
-          
+        <h1>CineTech</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pages/admin.html">Cadastrar</a></li>
+            </ul>
+        </nav>
+        <div>
+            <label for="categoriaFiltro">Filtrar por Categoria:</label>
+            <select id="categoriaFiltro">
+                <option value="">Todas as Categorias</option>
+                <option value="Ação">Ação</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Drama">Drama</option>
+            </select>
         </div>
     </header>
-
-    <!-- Conteúdo Principal -->
-    <main>
-        <section id="releases">
-            <h2>Lançamentos</h2>
-            <div id="movies-container"></div>
-        </section>
-    </main>
-    <div id="movies-container">
-        <div class="movie-card">
-            <img src="path/to/image.jpg" alt="Título do Filme">
-            <h3>Título do Filme</h3>
-            <p>Descrição do filme...</p>
-            <a href="link-to-trailer.html" target="_blank">Ver Trailer</a>
-        </div>
-        <!-- Repita para outros filmes -->
-    </div>
     
+    <main id="filmesContainer">
+        <h2>Filmes Disponíveis</h2>
+        <!-- Filmes carregados dinamicamente aparecerão aqui -->
+    </main>
 
-    <!-- Link para o Script -->
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 CineTech - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
